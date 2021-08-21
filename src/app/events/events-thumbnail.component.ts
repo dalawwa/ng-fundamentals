@@ -7,8 +7,15 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class EventsThumbnailComponent {
   @Input() event: any;
   @Output() eventClick = new EventEmitter();
+
+  someProp: any = 'ThumbnailPublicProp';
+
   handleClickMe() {
     console.log('clicked');
     this.eventClick.emit(this.event.name);
+  }
+
+  logFoo() {
+    console.log('foo');
   }
 }
