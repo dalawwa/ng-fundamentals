@@ -28,6 +28,7 @@ export class EventsThumbnailComponent {
 
   getStartTimeClass() {
     const isEarlyStart = this.event?.time === '8:00 am';
+    // could return a comma separated string of class names or an array of classnames strings
     return {
       green: isEarlyStart,
       bold: isEarlyStart,
