@@ -30,10 +30,21 @@ export class EventsThumbnailComponent {
   // the order of styles applied comes from the CSS not from the order or method in which they're added in the template
   getStartTimeClass() {
     const isEarlyStart = this.event?.time === '8:00 am';
-    // could return a comma separated string of class names or an array of classnames strings
+    // ngClass expects a comma separated string of class names or an array of classnames strings
     return {
       green: isEarlyStart,
       bold: isEarlyStart,
+    };
+  }
+
+  getStartTimeStyle() {
+    const isEarlyStart = this.event?.time === '8:00 am';
+    // styles from ngStyle are added to style added via html style attribute so when targetting the same property
+    // ngStyle always wins
+    return {
+      color: isEarlyStart ? 'green' : '#bbb',
+      'font-weight': isEarlyStart ? 'bold' : 'normal',
+      'font-style': isEarlyStart ? 'italic' : 'normal',
     };
   }
 }
