@@ -3,9 +3,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 
 import { ToastrService } from './common/toastr.service';
+import { Error404Component } from './errors/404.component';
 import { EventsAppComponent } from './events-app.component';
 import { CreateEventComponent } from './events/create-event.component';
 import { EventDetailsComponent } from './events/event-details/event-details.component';
+import { EventRouteActivatorService } from './events/event-details/event-route-activator.service';
 import { EventsListComponent } from './events/events-list.component';
 import { EventsThumbnailComponent } from './events/events-thumbnail.component';
 import { EventService } from './events/shared/event.service';
@@ -21,8 +23,9 @@ import { appRoutes } from './routes';
     NavBarComponent,
     EventDetailsComponent,
     CreateEventComponent,
+    Error404Component,
   ],
-  providers: [EventService, ToastrService],
+  providers: [EventService, ToastrService, EventRouteActivatorService],
   bootstrap: [EventsAppComponent],
 })
 export class AppModule {}
