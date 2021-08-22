@@ -4,7 +4,6 @@ import { EventService } from './shared/event.service';
 
 declare let toastr: any;
 @Component({
-  selector: 'events-list',
   templateUrl: './events-list.component.html',
 })
 export class EventsListComponent implements OnInit {
