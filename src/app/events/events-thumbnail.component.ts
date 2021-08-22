@@ -14,6 +14,9 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
       .thumbnail {
         min-height: 210px;
       }
+      .green {
+        color: #003300 !important;
+      }
     `,
   ],
 })
