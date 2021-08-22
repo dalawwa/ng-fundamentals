@@ -30,7 +30,7 @@ export class EventsThumbnailComponent {
   // the order of styles applied comes from the CSS not from the order or method in which they're added in the template
   getStartTimeClass() {
     const isEarlyStart = this.event?.time === '8:00 am';
-    // ngClass expects a comma separated string of class names or an array of classnames strings
+    // ngClass expects a comma separated string of class names or an array of classnames strings or an object as follows
     return {
       green: isEarlyStart,
       bold: isEarlyStart,
