@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ToastrService } from './common/toastr.service';
 
 import { EventsAppComponent } from './events-app.component';
+import { EventDetailsComponent } from './events/event-details/event-details.component';
 import { EventsListComponent } from './events/events-list.component';
 import { EventsThumbnailComponent } from './events/events-thumbnail.component';
 import { EventService } from './events/shared/event.service';
@@ -14,6 +15,7 @@ import { NavBarComponent } from './nav/navbar.component';
     EventsListComponent,
     EventsThumbnailComponent,
     NavBarComponent,
+    EventDetailsComponent,
   ],
   imports: [BrowserModule],
   providers: [EventService, ToastrService],
