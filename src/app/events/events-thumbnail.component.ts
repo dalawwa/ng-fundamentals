@@ -26,6 +26,8 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class EventsThumbnailComponent {
   @Input() event: any;
 
+  // ngClass can remove a class added via the html class attribute but class binding can not
+  // the order of styles applied comes from the CSS not from the order or method in which they're added in the template
   getStartTimeClass() {
     const isEarlyStart = this.event?.time === '8:00 am';
     // could return a comma separated string of class names or an array of classnames strings
