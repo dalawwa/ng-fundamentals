@@ -17,6 +17,9 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
       .green {
         color: #003300 !important;
       }
+      .bold {
+        font-weight: bold;
+      }
     `,
   ],
 })
