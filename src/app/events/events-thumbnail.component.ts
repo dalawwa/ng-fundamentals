@@ -11,6 +11,9 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
       .well div {
         color: #bbb;
       }
+      .thumbnail {
+        min-height: 210px;
+      }
     `,
   ],
 })
