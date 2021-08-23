@@ -1,9 +1,23 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
+
+// Subject: is equivalent to an EventEmitter, and the only way of multicasting a value or event to multiple Observers.
+// Observer: is a collection of callbacks that knows how to listen to values delivered by the Observable.
+// Observable: represents the idea of an invokable collection of future values or events.
+// source rxjs.dev/guide/overview
 
 @Injectable()
 export class EventService {
   getEvents() {
-    return EVENTS;
+    const subject = new Subject();
+    setTimeout(() => {
+      subject.next(EVENTS);
+      subject.complete();
+    }, 100);
+    return subject;
+  }
+  getEvent(id: number) {
+    return EVENTS.find((event) => event.id === id);
   }
 }
 
