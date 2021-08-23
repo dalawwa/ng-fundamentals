@@ -25,7 +25,7 @@ import { IEvent } from './shared';
   ],
 })
 export class EventsThumbnailComponent {
-  @Input() event?: IEvent;
+  @Input() event!: IEvent; // unsure whether to type it with ! or ?
 
   // ngClass can remove a class added via the html class attribute but class binding can not
   // the order of styles applied comes from the CSS not from the order or method in which they're added in the template
