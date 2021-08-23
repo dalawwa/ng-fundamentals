@@ -33,4 +33,9 @@ export const appRoutes: Routes = [
     redirectTo: '/events',
     pathMatch: 'full',
   },
+  {
+    path: 'user',
+    // when a route starts with /user then load our UserModule aka lazy loading
+    loadChildren: () => import('./user/user.module').then((m) => m.UserModule),
+  },
 ];
