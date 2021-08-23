@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ToastrService } from '../common/toastr.service';
+import { ToastrService } from '../common';
 
 declare let toastr: any;
 @Component({

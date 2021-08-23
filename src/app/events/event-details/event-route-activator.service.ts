@@ -1,6 +1,6 @@
 import { ActivatedRouteSnapshot, CanActivate, Router } from '@angular/router';
 import { Injectable } from '@angular/core';
-import { EventService } from '../shared/event.service';
+import { EventService } from '../shared';
 
 @Injectable()
 export class EventRouteActivatorService implements CanActivate {
