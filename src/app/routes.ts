@@ -11,6 +11,7 @@ export const appRoutes: Routes = [
   {
     path: 'events',
     component: EventsListComponent,
+    // upon completion, the return value of EventlistResolver's resolve function will be stored in <ActivatedRoute>.snapshot.data['events']
     resolve: { events: EventListResolver },
   },
   {
