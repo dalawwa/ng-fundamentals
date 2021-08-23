@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AuthService } from '../user/auth.service';
+import { IUser } from '../user/user.model';
 
 @Component({
   selector: 'nav-bar',
@@ -22,4 +24,7 @@ import { Component } from '@angular/core';
     `,
   ],
 })
-export class NavBarComponent {}
+export class NavBarComponent {
+  // auth is public so we can access it in the template
+  constructor(public auth: AuthService) {}
+}
