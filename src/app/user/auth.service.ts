@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { IUser } from './user.model';
 
 @Injectable()
@@ -17,5 +18,12 @@ export class AuthService {
 
   isAuthenticated(): boolean {
     return Boolean(this.currentUser);
+  }
+
+  updateUser(formValue: NgForm['value']) {
+    this.currentUser = {
+      ...this.currentUser,
+      ...formValue,
+    };
   }
 }

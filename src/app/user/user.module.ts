@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { ProfileComponent } from './profile.component';
 import { userRoutes } from './user.routes';
@@ -11,7 +11,8 @@ import { LoginComponent } from './login.component';
   imports: [
     CommonModule, // for feature module aka lazily loadable module use CommonModule, but for root app module use BrowserModule
     RouterModule.forChild(userRoutes), // for feature module use forChild vs using forRoot as in root app module. Remember to connect it in appRoutes with loadChildren
-    FormsModule,
+    FormsModule, // needed for NgModel, NgForm, NgSubmit...
+    ReactiveFormsModule, // needed for FormGroup, FormControl...
   ],
   declarations: [ProfileComponent, LoginComponent],
   providers: [
