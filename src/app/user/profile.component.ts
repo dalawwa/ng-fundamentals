@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from './auth.service';
+import { FormValidatorService } from './form-validator.service';
 
 @Component({
   templateUrl: './profile.component.html',
@@ -33,16 +34,18 @@ import { AuthService } from './auth.service';
 export class ProfileComponent implements OnInit {
   profileForm!: FormGroup;
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private formValidatorService: FormValidatorService
+  ) {}
   ngOnInit() {
-    const firstName = new FormControl(
-      this.authService.currentUser.firstName,
-      Validators.required
-    );
-    const lastName = new FormControl(
-      this.authService.currentUser.lastName,
-      Validators.required
-    );
+    const firstName = new FormControl(this.authService.currentUser.firstName, [
+      ...this.formValidatorService.requiredNamesValidator,
+    ]);
+    const lastName = new FormControl(this.authService.currentUser.lastName, [
+      ...this.formValidatorService.requiredNamesValidator,
+    ]);
     this.profileForm = new FormGroup({
       firstName,
       lastName,

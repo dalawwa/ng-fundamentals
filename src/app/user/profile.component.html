@@ -15,7 +15,20 @@
         }"
       >
         <label for="firstName">First Name:</label>
-        <em *ngIf="isInvalidAndTouched('firstName')">Required</em>
+        <em
+          *ngIf="
+            isInvalidAndTouched('firstName') &&
+            profileForm.controls.firstName.errors?.required
+          "
+          >Required</em
+        >
+        <em
+          *ngIf="
+            isInvalidAndTouched('firstName') &&
+            profileForm.controls.firstName.errors?.pattern
+          "
+          >Must start with a letter</em
+        >
         <input
           formControlName="firstName"
           id="firstName"
@@ -31,7 +44,20 @@
         }"
       >
         <label for="lastName">Last Name:</label>
-        <em *ngIf="isInvalidAndTouched('lastName')">Required</em>
+        <em
+          *ngIf="
+            isInvalidAndTouched('lastName') &&
+            profileForm.controls.lastName.errors?.required
+          "
+          >Required</em
+        >
+        <em
+          *ngIf="
+            isInvalidAndTouched('lastName') &&
+            profileForm.controls.lastName.errors?.required
+          "
+          >Must start with a letter</em
+        >
         <input
           formControlName="lastName"
           id="lastName"

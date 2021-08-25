@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProfileComponent } from './profile.component';
 import { userRoutes } from './user.routes';
 import { LoginComponent } from './login.component';
+import { FormValidatorService } from './form-validator.service';
 
 @NgModule({
   imports: [
@@ -17,6 +18,7 @@ import { LoginComponent } from './login.component';
   declarations: [ProfileComponent, LoginComponent],
   providers: [
     // we added AuthService in app.module as they're available everywhere. Not the case for imports and declarations
+    FormValidatorService,
   ],
 })
 export class UserModule {}
