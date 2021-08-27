@@ -17,9 +17,11 @@ import {
 import { NavBarComponent } from './nav';
 import { appRoutes } from './routes';
 import { AuthService } from './user/auth.service';
+import { FormValidatorService } from './common/form-validator.service';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  imports: [BrowserModule, RouterModule.forRoot(appRoutes)],
+  imports: [BrowserModule, FormsModule, RouterModule.forRoot(appRoutes)],
   declarations: [
     EventsAppComponent,
     EventsListComponent,
@@ -36,6 +38,7 @@ import { AuthService } from './user/auth.service';
     { provide: 'canDeactivateCreateEvent', useValue: checkDirtyState }, // when not making a full service
     EventListResolver,
     AuthService,
+    FormValidatorService,
   ],
   bootstrap: [EventsAppComponent],
 })

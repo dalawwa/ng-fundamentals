@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { IEvent } from './event.model';
+import { IEvent, ISession } from './event.model';
 
 // Subject: is equivalent to an EventEmitter, and the only way of multicasting a value or event to multiple Observers.
 // Observer: is a collection of callbacks that knows how to listen to values delivered by the Observable.
@@ -19,6 +19,15 @@ export class EventService {
   }
   getEvent(id: number): IEvent | undefined {
     return EVENTS.find((event) => event.id === id);
+  }
+
+  saveEvent(event: Omit<IEvent, 'id' | 'sessions'>): void {
+    const newEvent = {
+      ...event,
+      id: 999,
+      sessions: [],
+    };
+    EVENTS.push(newEvent);
   }
 }
 

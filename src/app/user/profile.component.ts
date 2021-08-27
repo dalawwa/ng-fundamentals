@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from './auth.service';
-import { FormValidatorService } from './form-validator.service';
+import { FormValidatorService } from '../common/form-validator.service';
 
 @Component({
   templateUrl: './profile.component.html',
@@ -64,9 +64,9 @@ export class ProfileComponent implements OnInit {
   }
 
   isInvalidAndTouched(formControlName: string) {
-    return (
-      this.profileForm.controls[formControlName]?.invalid &&
-      this.profileForm.controls[formControlName]?.touched
+    return this.formValidatorService.isInvalidAndTouched(
+      this.profileForm,
+      formControlName
     );
   }
 }
