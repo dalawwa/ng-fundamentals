@@ -1,0 +1,7 @@
+<div class="well pointable" (click)="toggleContent()">
+  <h4>
+    <ng-content select="[well-title]"></ng-content>
+  </h4>
+  <!-- interestingly, ng-content can not use [hidden] (and maybe other html properties ?) -->
+  <ng-content *ngIf="visible" select="[well-body]"></ng-content>
+</div>
