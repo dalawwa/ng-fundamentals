@@ -8,8 +8,14 @@ import {
   EventListResolver,
   EventsListComponent,
 } from './events';
+import { CreateSessionComponent } from './events/event-details/create-session.component';
 
 export const appRoutes: Routes = [
+  {
+    path: 'events/sessions/new',
+    component: CreateSessionComponent,
+    canDeactivate: ['canDeactivateCreateSession'],
+  },
   {
     path: 'events',
     component: EventsListComponent,
