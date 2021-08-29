@@ -13,7 +13,6 @@ import {
   EventsListComponent,
   EventsThumbnailComponent,
   EventService,
-  SessionService,
   SessionListComponent,
 } from './events';
 import { NavBarComponent } from './nav';
@@ -50,7 +49,6 @@ import { CreateSessionComponent } from './events/event-details/create-session.co
     EventListResolver,
     AuthService,
     FormValidatorService,
-    SessionService,
   ],
   bootstrap: [EventsAppComponent],
 })

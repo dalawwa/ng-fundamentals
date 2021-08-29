@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { ISession, restrictedWords } from '../shared';
-import { SessionService } from './session.service';
 
 @Component({
+  selector: 'create-session',
   templateUrl: './create-session.component.html',
   styles: [
     `
@@ -37,6 +37,8 @@ import { SessionService } from './session.service';
 export class CreateSessionComponent implements OnInit {
   isDirty: boolean = true;
   newSessionForm!: FormGroup;
+  @Output() saveNewSession = new EventEmitter();
+  @Output() cancelAddSession = new EventEmitter();
 
   name?: FormControl;
   presenter?: FormControl;
@@ -44,7 +46,7 @@ export class CreateSessionComponent implements OnInit {
   level?: FormControl;
   abstract?: FormControl;
 
-  constructor(private sessionService: SessionService, private router: Router) {}
+  constructor(private router: Router) {}
   ngOnInit() {
     this.name = new FormControl('', Validators.required);
     this.presenter = new FormControl('', Validators.required);
@@ -72,10 +74,10 @@ export class CreateSessionComponent implements OnInit {
       ...formValue,
       duration: Number(formValue.duration), // casting to Number as form values are of type any
     };
-    this.sessionService.saveSession(newSession);
+    this.saveNewSession.emit(newSession);
   }
 
   cancel() {
-    this.router.navigate(['events']);
+    this.cancelAddSession.emit();
   }
 }
