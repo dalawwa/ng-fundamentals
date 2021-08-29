@@ -1,11 +1,11 @@
-import { FormControl } from '@angular/forms';
+import { AbstractControl, ValidationErrors } from '@angular/forms';
 
 // form field validation functions signature
-// when valid (FormControl) => null
-// when invalid (FormControl) => Record<string, any>
+// when valid (AbstractControl) => null
+// when invalid (AbstractControl) => ValidationErrors
 export function restrictedWords(words: string[]) {
   if (!words || !words.length) return () => null;
-  return (control: FormControl): Record<string, any> | null => {
+  return (control: AbstractControl): ValidationErrors | null => {
     const invalidWords = words.reduce<string[]>(
       (invalidWordsList, invalidWord) => {
         if (control.value.includes(invalidWord))
