@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ISession } from '../shared';
+
+import { ISession, restrictedWords } from '../shared';
 import { SessionService } from './session.service';
 
 @Component({
@@ -52,7 +53,7 @@ export class CreateSessionComponent implements OnInit {
     this.abstract = new FormControl('', [
       Validators.required,
       Validators.maxLength(400),
-      this.restrictedWords(['foo', 'bar']),
+      restrictedWords(['foo', 'bar']),
     ]);
 
     this.newSessionForm = new FormGroup({
@@ -62,27 +63,6 @@ export class CreateSessionComponent implements OnInit {
       level: this.level,
       abstract: this.abstract,
     });
-  }
-
-  // form field validation functions signature
-  // when valid (FormControl) => null
-  // when invalid (FormControl) => Record<string, any>
-  private restrictedWords(words: string[]) {
-    if (!words || !words.length) return () => null;
-    return (control: FormControl): Record<string, any> | null => {
-      const invalidWords = words.reduce<string[]>(
-        (invalidWordsList, invalidWord) => {
-          if (control.value.includes(invalidWord))
-            return [...invalidWordsList, invalidWord];
-          return invalidWordsList;
-        },
-        []
-      );
-      // restrictedWords value will be accessible in template under <controlName>?.errors?.restrictedWords
-      return invalidWords.length
-        ? { restrictedWords: invalidWords.join(', ') }
-        : null;
-    };
   }
 
   saveSession(formValue: NgForm['value']) {
