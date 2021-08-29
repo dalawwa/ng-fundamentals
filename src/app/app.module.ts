@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 
-import { ToastrService } from './common';
+import { CollapsibleWellComponent, ToastrService } from './common';
 import { Error404Component } from './errors';
 import { EventsAppComponent } from './events-app.component';
 import {
@@ -39,6 +39,7 @@ import { CreateSessionComponent } from './events/event-details/create-session.co
     Error404Component,
     CreateSessionComponent,
     SessionListComponent,
+    CollapsibleWellComponent,
   ],
   providers: [
     EventService,
