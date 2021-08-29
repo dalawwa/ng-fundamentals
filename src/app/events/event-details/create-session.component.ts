@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ISession } from '../shared';
 import { SessionService } from './session.service';
 
@@ -12,7 +13,9 @@ import { SessionService } from './session.service';
         color: #e05c65;
         padding-left: 10px;
       }
-      .error input {
+      .error input,
+      .error textarea,
+      .error select {
         background-color: #e3c3c5;
       }
       .error ::-webkit-input-placeholder {
@@ -40,7 +43,7 @@ export class CreateSessionComponent implements OnInit {
   level?: FormControl;
   abstract?: FormControl;
 
-  constructor(private sessionService: SessionService) {}
+  constructor(private sessionService: SessionService, private router: Router) {}
   ngOnInit() {
     this.name = new FormControl('', Validators.required);
     this.presenter = new FormControl('', Validators.required);
@@ -65,8 +68,12 @@ export class CreateSessionComponent implements OnInit {
       id: undefined,
       voters: [],
       ...formValue,
-      duration: Number(formValue.duration), // casting to Number as form values are of type string
+      duration: Number(formValue.duration), // casting to Number as form values are of type any
     };
     this.sessionService.saveSession(newSession);
+  }
+
+  cancel() {
+    this.router.navigate(['events']);
   }
 }
