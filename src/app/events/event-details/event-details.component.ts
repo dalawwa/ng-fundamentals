@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 
 import { EventService, IEvent, ISession } from '../shared';
 import { Levels } from './level.model';
+import { SortKeys } from './sortkey.model';
 
 @Component({
   templateUrl: './event-details.component.html',
@@ -26,6 +27,8 @@ export class EventDetailsComponent implements OnInit {
   addMode: boolean = false;
   filterBy: Levels = Levels.All;
   levels = Levels; // need a copy of the enum for access in template
+  sortBy: SortKeys = SortKeys.Votes;
+  sortKeys = SortKeys;
 
   constructor(
     private eventService: EventService,

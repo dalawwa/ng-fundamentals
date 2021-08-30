@@ -9,6 +9,8 @@
         <span>Duration: {{ session.duration | duration }}</span
         ><br />
         <span>Level: {{ session.level }}</span>
+        <br />
+        <p>Votes: {{ session.voters.length }}</p>
         <p>{{ session.abstract }}</p>
       </div>
     </collapsible-well>
