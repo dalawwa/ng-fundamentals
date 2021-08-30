@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { EventService, IEvent, ISession } from '../shared';
+import { Levels } from './level.model';
 
 @Component({
   templateUrl: './event-details.component.html',
@@ -23,6 +24,9 @@ import { EventService, IEvent, ISession } from '../shared';
 export class EventDetailsComponent implements OnInit {
   event?: IEvent;
   addMode: boolean = false;
+  filterBy: Levels = Levels.All;
+  levels = Levels; // need a copy of the enum for access in template
+
   constructor(
     private eventService: EventService,
     private route: ActivatedRoute
