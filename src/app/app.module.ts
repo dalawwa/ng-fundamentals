@@ -14,6 +14,7 @@ import {
   EventsThumbnailComponent,
   EventService,
   SessionListComponent,
+  DurationPipe,
 } from './events';
 import { NavBarComponent } from './nav';
 import { appRoutes } from './routes';
@@ -40,6 +41,7 @@ import { CreateSessionComponent } from './events/event-details/create-session.co
     CreateSessionComponent,
     SessionListComponent,
     CollapsibleWellComponent,
+    DurationPipe,
   ],
   providers: [
     EventService,

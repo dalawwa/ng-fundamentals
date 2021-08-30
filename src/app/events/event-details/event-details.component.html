@@ -3,15 +3,15 @@
 
   <div class="row">
     <div class="col-md-11">
-      <h2>{{ event?.name }}</h2>
+      <h2>{{ event?.name | uppercase }}</h2>
     </div>
   </div>
 
   <div class="row">
     <div class="col-md-6">
-      <div><strong>Date:</strong> {{ event?.date }}</div>
+      <div><strong>Date:</strong> {{ event?.date | date: "dd/MM/yyyy" }}</div>
       <div><strong>Time:</strong> {{ event?.time }}</div>
-      <div><strong>Price:</strong> ${{ event?.price }}</div>
+      <div><strong>Price:</strong> {{ event?.price | currency: "€" }}</div>
     </div>
     <div class="col-md-6">
       <address>
@@ -22,15 +22,71 @@
     </div>
   </div>
   <hr />
-  <div class="row">
+  <div class="row" style="margin-bottom: 10px">
     <div class="col-md-2">
       <h3 style="margin: 0">Sessions</h3>
+    </div>
+    <div class="col-md-7">
+      <div
+        class="btn-group btn-group-sm"
+        style="margin-right: 20px; margin-left: 20px"
+      >
+        <button
+          class="btn btn-default"
+          [class.active]="sortBy === sortKeys.Name"
+          (click)="sortBy = sortKeys.Name"
+        >
+          By Name
+        </button>
+        <button
+          class="btn btn-default"
+          [class.active]="sortBy === sortKeys.Votes"
+          (click)="sortBy = sortKeys.Votes"
+        >
+          By Votes
+        </button>
+      </div>
+      <div class="btn-group btn-group-sm">
+        <button
+          class="btn btn-default"
+          [class.active]="filterBy === levels.All"
+          (click)="filterBy = levels.All"
+        >
+          All
+        </button>
+        <button
+          class="btn btn-default"
+          [class.active]="filterBy === levels.Beginner"
+          (click)="filterBy = levels.Beginner"
+        >
+          Beginner
+        </button>
+        <button
+          class="btn btn-default"
+          [class.active]="filterBy === levels.Intermediate"
+          (click)="filterBy = levels.Intermediate"
+        >
+          Intermediate
+        </button>
+        <button
+          class="btn btn-default"
+          [class.active]="filterBy === levels.Advanced"
+          (click)="filterBy = levels.Advanced"
+        >
+          Advanced
+        </button>
+      </div>
     </div>
     <div class="col-md-2">
       <a (click)="addSession()">Add session</a>
     </div>
   </div>
-  <session-list *ngIf="!addMode" [sessions]="event?.sessions"></session-list>
+  <session-list
+    [sortBy]="sortBy"
+    [filterBy]="filterBy"
+    *ngIf="!addMode"
+    [sessions]="event?.sessions"
+  ></session-list>
   <create-session
     *ngIf="addMode"
     (saveNewSession)="saveNewSession($event)"
